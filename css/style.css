@@ -523,6 +523,15 @@ section {
     padding: 2rem;
     border-radius: 8px;
     border-top: 4px solid var(--secondary-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.credential-item:hover {
+    background-color: var(--light-bg);
+    border-top-color: var(--accent-color);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .credential-item h3 {
