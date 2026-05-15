@@ -399,14 +399,15 @@ section {
 }
 
 .credential-link:hover {
-    background-color: var(--light-bg);
-    border-left-color: var(--accent-color);
+    background-color: var(--secondary-color);
+    border-left-color: var(--secondary-color);
+    color: var(--white);
     transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
 
-.credential-link strong {
-    color: var(--primary-color);
+.credential-link:hover strong {
+    color: var(--white);
 }
 
 .credential strong {
