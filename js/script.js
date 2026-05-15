@@ -56,10 +56,55 @@ function initializeContactForm() {
     const form = document.getElementById('contact-form');
 
     if (form) {
-        form.addEventListener('submit', function(e) {
-            // Form will submit to formspree or your email service
-            // Remove this if you're using a service that handles submission
-            console.log('Contact form submitted');
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+                consent: document.getElementById('consent').checked
+            };
+
+            // Validate
+            if (!validateContactForm(formData)) {
+                return;
+            }
+
+            // Show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+
+            try {
+                // Send to serverless function
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('✅ Message sent successfully! We\'ll be in touch soon.');
+                    form.reset();
+                } else {
+                    alert('❌ Error sending message: ' + (result.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('❌ Error sending message. Please try again.');
+            } finally {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
         });
     }
 }
