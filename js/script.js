@@ -81,21 +81,22 @@ function initializeContactForm() {
             submitButton.disabled = true;
 
             try {
-                // Send to Formspree
-                const response = await fetch(form.action, {
+                // Send to serverless function
+                const response = await fetch('/api/send-email', {
                     method: 'POST',
                     headers: {
-                        'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(formData)
                 });
 
-                if (response.ok) {
+                const result = await response.json();
+
+                if (response.ok && result.success) {
                     alert('✅ Message sent successfully! We\'ll be in touch soon.');
                     form.reset();
                 } else {
-                    alert('❌ Error sending message. Please try again.');
+                    alert('❌ Error sending message: ' + (result.message || 'Unknown error'));
                 }
             } catch (error) {
                 console.error('Form submission error:', error);
