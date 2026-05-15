@@ -399,6 +399,26 @@ section {
     margin: 0 auto;
 }
 
+.bio-header {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.bio-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.bio-header h2 {
+    margin: 0;
+}
+
 .bio-content p {
     line-height: 1.8;
     margin-bottom: 1.5rem;
@@ -1193,6 +1213,18 @@ section {
 @media (max-width: 768px) {
     .container {
         padding: 0 1.5rem;
+    }
+
+    .bio-header {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .bio-photo {
+        width: 150px;
+        height: 150px;
     }
 
     h1 {
