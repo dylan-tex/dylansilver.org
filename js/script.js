@@ -55,14 +55,31 @@ function initializeScrollBehavior() {
 // ========== SCROLL HIGHLIGHT ==========
 
 function initializeScrollHighlight() {
-    const credentialLinks = document.querySelectorAll('.credential-link');
+    // Check if mobile (only apply scroll highlight on mobile)
+    const isMobile = window.innerWidth <= 768;
 
-    if (credentialLinks.length === 0) return;
+    if (!isMobile) return;
+
+    // Select all box elements that should have scroll highlight
+    const boxSelectors = [
+        '.credential-link',
+        '.service-card',
+        '.credential-item',
+        '.expertise-item',
+        '.faq-item',
+        '.area-card'
+    ];
+
+    const allBoxes = document.querySelectorAll(boxSelectors.join(', '));
+
+    if (allBoxes.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
+            } else {
+                entry.target.classList.remove('in-view');
             }
         });
     }, {
@@ -70,10 +87,18 @@ function initializeScrollHighlight() {
         rootMargin: '0px'
     });
 
-    credentialLinks.forEach(link => {
-        observer.observe(link);
+    allBoxes.forEach(box => {
+        observer.observe(box);
     });
 }
+
+// Re-initialize scroll highlight on window resize
+window.addEventListener('resize', () => {
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        initializeScrollHighlight();
+    }
+});
 
 // ========== HAMBURGER MENU ==========
 

@@ -410,14 +410,41 @@ section {
     color: var(--white);
 }
 
-.credential-link.in-view {
-    background-color: var(--secondary-color);
-    border-left-color: var(--secondary-color);
-    color: var(--white);
-}
+/* Scroll highlight - mobile only */
+@media (max-width: 768px) {
+    .credential-link.in-view,
+    .service-card.in-view,
+    .credential-item.in-view,
+    .expertise-item.in-view,
+    .faq-item.in-view,
+    .area-card.in-view {
+        background-color: var(--secondary-color) !important;
+        border-color: var(--secondary-color) !important;
+        color: var(--white);
+    }
 
-.credential-link.in-view strong {
-    color: var(--white);
+    .credential-link.in-view strong,
+    .service-card.in-view h3,
+    .service-card.in-view p,
+    .credential-item.in-view h3,
+    .credential-item.in-view p,
+    .expertise-item.in-view h3,
+    .expertise-item.in-view p,
+    .faq-item.in-view h4,
+    .faq-item.in-view p,
+    .area-card.in-view h3,
+    .area-card.in-view p {
+        color: var(--white);
+    }
+
+    .credential-link.in-view a,
+    .service-card.in-view a,
+    .credential-item.in-view a,
+    .expertise-item.in-view a,
+    .faq-item.in-view a,
+    .area-card.in-view a {
+        color: var(--white);
+    }
 }
 
 .credential strong {
