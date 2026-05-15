@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeScrollBehavior();
     initializeContactForm();
+    initializeHamburgerMenu();
 });
 
 // ========== NAVIGATION ==========
@@ -48,6 +49,39 @@ function initializeScrollBehavior() {
             navbar.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
         }
     });
+}
+
+// ========== HAMBURGER MENU ==========
+
+function initializeHamburgerMenu() {
+    const hamburger = document.getElementById('hamburger-menu');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    if (hamburger && navMenu) {
+        // Toggle menu when hamburger is clicked
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a nav link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = hamburger.contains(event.target) || navMenu.contains(event.target);
+            if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
 }
 
 // ========== NOTIFICATIONS ==========
