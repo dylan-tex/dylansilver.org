@@ -410,6 +410,16 @@ section {
     color: var(--white);
 }
 
+.credential-link.in-view {
+    background-color: var(--secondary-color);
+    border-left-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.credential-link.in-view strong {
+    color: var(--white);
+}
+
 .credential strong {
     display: block;
     margin-bottom: 0.5rem;

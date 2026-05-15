@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollBehavior();
     initializeContactForm();
     initializeHamburgerMenu();
+    initializeScrollHighlight();
 });
 
 // ========== NAVIGATION ==========
@@ -48,6 +49,29 @@ function initializeScrollBehavior() {
         } else {
             navbar.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
         }
+    });
+}
+
+// ========== SCROLL HIGHLIGHT ==========
+
+function initializeScrollHighlight() {
+    const credentialLinks = document.querySelectorAll('.credential-link');
+
+    if (credentialLinks.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, {
+        threshold: 0.5,
+        rootMargin: '0px'
+    });
+
+    credentialLinks.forEach(link => {
+        observer.observe(link);
     });
 }
 
