@@ -54,11 +54,11 @@ function initializeScrollBehavior() {
 
 // ========== SCROLL HIGHLIGHT ==========
 
+let scrollObserver = null;
+
 function initializeScrollHighlight() {
     // Check if mobile (only apply scroll highlight on mobile)
     const isMobile = window.innerWidth <= 768;
-
-    if (!isMobile) return;
 
     // Select all box elements that should have scroll highlight
     const boxSelectors = [
@@ -74,30 +74,40 @@ function initializeScrollHighlight() {
 
     if (allBoxes.length === 0) return;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-            } else {
-                entry.target.classList.remove('in-view');
-            }
-        });
-    }, {
-        threshold: 0.5,
-        rootMargin: '0px'
-    });
+    // Disconnect existing observer
+    if (scrollObserver) {
+        scrollObserver.disconnect();
+    }
 
-    allBoxes.forEach(box => {
-        observer.observe(box);
-    });
+    if (isMobile) {
+        // Mobile: add/remove in-view class on scroll
+        scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, {
+            threshold: 0.5,
+            rootMargin: '0px'
+        });
+
+        allBoxes.forEach(box => {
+            scrollObserver.observe(box);
+        });
+    } else {
+        // Desktop: remove all in-view classes (hover only)
+        allBoxes.forEach(box => {
+            box.classList.remove('in-view');
+        });
+    }
 }
 
-// Re-initialize scroll highlight on window resize
+// Re-initialize on window resize
 window.addEventListener('resize', () => {
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-        initializeScrollHighlight();
-    }
+    initializeScrollHighlight();
 });
 
 // ========== HAMBURGER MENU ==========
