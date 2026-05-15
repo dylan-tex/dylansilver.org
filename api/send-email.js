@@ -59,13 +59,13 @@ export default async function handler(req, res) {
       </p>
     `;
 
-    // Send email to your inboxes
+    // Send email to your inbox
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: 'dylansilver.tx@gmail.com, dsilver@reliverealty.com',
+      to: 'dylansilver.tx@gmail.com',
       subject: `📧 New Contact Form: ${subject} from ${name}`,
       html: contactData,
-      replyTo: email,
+      replyTo: 'contact@dylansilver.org',
     });
 
     // Send confirmation email to the person who submitted
