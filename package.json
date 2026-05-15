@@ -2,7 +2,6 @@
   "name": "dylansilver-org",
   "version": "1.0.0",
   "description": "Dylan Silver - Austin Real Estate Specialist",
-  "type": "module",
   "dependencies": {
     "nodemailer": "^6.9.7"
   }
