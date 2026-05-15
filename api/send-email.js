@@ -65,7 +65,7 @@ export default async function handler(req, res) {
       to: 'dylansilver.tx@gmail.com',
       subject: `📧 New Contact Form: ${subject} from ${name}`,
       html: contactData,
-      replyTo: 'contact@dylansilver.org',
+      replyTo: email,
     });
 
     // Send confirmation email to the person who submitted
