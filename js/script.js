@@ -50,6 +50,61 @@ function initializeScrollBehavior() {
     });
 }
 
+// ========== NOTIFICATIONS ==========
+
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 16px 24px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        max-width: 400px;
+        z-index: 10000;
+        animation: slideIn 0.3s ease-out;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    `;
+
+    if (type === 'success') {
+        notification.style.backgroundColor = '#10b981';
+        notification.style.color = 'white';
+    } else {
+        notification.style.backgroundColor = '#ef4444';
+        notification.style.color = 'white';
+    }
+
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    // Add animation
+    const style = document.createElement('style');
+    if (!document.querySelector('style[data-notification]')) {
+        style.setAttribute('data-notification', 'true');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(400px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Remove after 4 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideIn 0.3s ease-out reverse';
+        setTimeout(() => notification.remove(), 300);
+    }, 4000);
+}
+
 // ========== CONTACT FORM ==========
 
 function initializeContactForm() {
@@ -93,14 +148,14 @@ function initializeContactForm() {
                 const result = await response.json();
 
                 if (response.ok && result.success) {
-                    alert('✅ Message sent successfully! We\'ll be in touch soon.');
+                    showNotification('✅ Message sent successfully! We\'ll be in touch soon.', 'success');
                     form.reset();
                 } else {
-                    alert('❌ Error sending message: ' + (result.message || 'Unknown error'));
+                    showNotification('❌ Error sending message: ' + (result.message || 'Unknown error'), 'error');
                 }
             } catch (error) {
                 console.error('Form submission error:', error);
-                alert('❌ Error sending message. Please try again.');
+                showNotification('❌ Error sending message. Please try again.', 'error');
             } finally {
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
