@@ -136,6 +136,13 @@ a:hover {
     color: var(--white);
 }
 
+/* Keep the Contact CTA button's text white when it's the active page
+   (otherwise .nav-links a.active turns it blue-on-blue and disappears). */
+.nav-links a.active.btn-cta,
+.nav-links a.btn-cta:hover {
+    color: var(--white);
+}
+
 /* ========== HAMBURGER MENU ========== */
 
 .hamburger {
