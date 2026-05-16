@@ -60,14 +60,17 @@ function initializeScrollBehavior() {
 }
 
 // ========== CROSS-PAGE ANCHOR SCROLL ==========
-// On page load, if URL has a hash, scroll to top first then smoothly scroll to target
+// On page load, if URL has a hash, scroll to top first then smoothly scroll to target.
+// Desktop (>768px): skip the scroll so the page lands at the top instead.
 if (window.location.hash) {
     const target = document.querySelector(window.location.hash);
-    if (target) {
+    if (target && window.innerWidth <= 768) {
         window.scrollTo(0, 0);
         setTimeout(() => {
             target.scrollIntoView({ behavior: 'smooth' });
         }, 100);
+    } else if (target) {
+        window.scrollTo(0, 0);
     }
 }
 
