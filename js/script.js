@@ -85,7 +85,8 @@ function initializeScrollHighlight() {
         '.area-card',
         '.faq-item',
         '.bio-card',
-        '.intro-card'
+        '.intro-card',
+        '.service-block'
     ];
 
     const allBoxes = document.querySelectorAll(boxSelectors.join(', '));

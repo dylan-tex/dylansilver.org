@@ -281,6 +281,7 @@ a:hover {
 
 .btn-primary:hover {
     background-color: var(--accent-color);
+    color: var(--white);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
 }
@@ -448,7 +449,8 @@ section {
     .area-card:hover,
     .faq-item:hover,
     .bio-card:hover,
-    .intro-card:hover {
+    .intro-card:hover,
+    .service-block:hover {
         background-color: var(--secondary-color);
         border-color: var(--secondary-color);
         border-top-color: var(--secondary-color);
@@ -474,7 +476,8 @@ section {
     .area-card:hover *,
     .faq-item:hover *,
     .bio-card:hover *,
-    .intro-card:hover * {
+    .intro-card:hover *,
+    .service-block:hover * {
         color: var(--white);
     }
 
@@ -500,7 +503,8 @@ section {
     .area-card:hover .btn,
     .faq-item:hover .btn,
     .bio-card:hover .btn,
-    .intro-card:hover .btn {
+    .intro-card:hover .btn,
+    .service-block:hover .btn {
         background-color: var(--white);
         color: var(--secondary-color);
         border-color: var(--white);
@@ -525,7 +529,8 @@ section {
     .area-card.in-view,
     .faq-item.in-view,
     .bio-card.in-view,
-    .intro-card.in-view {
+    .intro-card.in-view,
+    .service-block.in-view {
         background-color: var(--secondary-color);
         border-color: var(--secondary-color);
         border-top-color: var(--secondary-color);
@@ -550,7 +555,8 @@ section {
     .area-card.in-view *,
     .faq-item.in-view *,
     .bio-card.in-view *,
-    .intro-card.in-view * {
+    .intro-card.in-view *,
+    .service-block.in-view * {
         color: var(--white);
     }
 
@@ -575,7 +581,8 @@ section {
     .area-card.in-view .btn,
     .faq-item.in-view .btn,
     .bio-card.in-view .btn,
-    .intro-card.in-view .btn {
+    .intro-card.in-view .btn,
+    .service-block.in-view .btn {
         background-color: var(--white);
         color: var(--secondary-color);
         border-color: var(--white);
@@ -668,6 +675,16 @@ section {
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1rem;
+}
+
+.service-block {
+    background-color: var(--white);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
 }
 
 /* ========== ABOUT SECTIONS ========== */
