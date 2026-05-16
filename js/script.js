@@ -12,7 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHamburgerMenu();
     initializeScrollHighlight();
     initializeSkillPills();
+    initializeHeroVideo();
 });
+
+function initializeHeroVideo() {
+    const video = document.querySelector('.hero-video-bg');
+    if (video) video.playbackRate = 1.5;
+}
 
 // ========== NAVIGATION ==========
 
