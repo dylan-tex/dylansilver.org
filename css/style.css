@@ -438,7 +438,7 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 3rem;
-    align-items: center;
+    align-items: start;
 }
 
 .book-call-text h2 {
