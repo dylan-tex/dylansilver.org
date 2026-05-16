@@ -83,6 +83,7 @@ function initializeScrollHighlight() {
     const boxSelectors = [
         '.service-card',
         '.credential-link',
+        '.credential-btn',
         '.credential-item',
         '.expertise-item',
         '.disclosure-item',

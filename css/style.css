@@ -538,6 +538,7 @@ section {
 /* Smooth transition for every highlightable content card */
 .service-card,
 .credential-link,
+.credential-btn,
 .credential-item,
 .expertise-item,
 .disclosure-item,
@@ -562,6 +563,7 @@ section {
 @media (min-width: 769px) {
     .service-card:hover,
     .credential-link:hover,
+    .credential-btn:hover,
     .credential-item:hover,
     .expertise-item:hover,
     .disclosure-item:hover,
@@ -589,6 +591,7 @@ section {
 
     .service-card:hover *,
     .credential-link:hover *,
+    .credential-btn:hover *,
     .credential-item:hover *,
     .expertise-item:hover *,
     .disclosure-item:hover *,
@@ -642,6 +645,7 @@ section {
 @media (max-width: 768px) {
     .service-card.in-view,
     .credential-link.in-view,
+    .credential-btn.in-view,
     .credential-item.in-view,
     .expertise-item.in-view,
     .disclosure-item.in-view,
@@ -668,6 +672,7 @@ section {
 
     .service-card.in-view *,
     .credential-link.in-view *,
+    .credential-btn.in-view *,
     .credential-item.in-view *,
     .expertise-item.in-view *,
     .disclosure-item.in-view *,
@@ -2297,12 +2302,6 @@ section {
     font-size: inherit;
     text-align: left;
     width: 100%;
-}
-
-.credential-btn:hover {
-    background: var(--light-bg);
-    border-color: var(--primary-color);
-    color: inherit;
 }
 
 /* ========== INLINE CERT LINK (services list) ========== */
