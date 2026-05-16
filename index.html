@@ -85,12 +85,36 @@
         </div>
     </section>
 
+    <!-- Email Capture Section -->
+    <section class="lead-capture">
+        <div class="container">
+            <div class="lead-capture-content">
+                <div class="lead-capture-text">
+                    <h2>Austin Market Updates</h2>
+                    <p>Get monthly insights on Austin rental trends, neighborhood guides, and real estate tips — straight to your inbox.</p>
+                </div>
+                <form class="lead-capture-form" action="https://formspree.io/f/xpwzgqdw" method="POST">
+                    <input type="hidden" name="_subject" value="New Austin Market Updates Subscriber">
+                    <div class="lead-capture-row">
+                        <input type="text" name="name" placeholder="Your name" required>
+                        <input type="email" name="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                    <p class="lead-capture-fine">No spam. Unsubscribe anytime.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <h2>Ready to Find Your Perfect Austin Home?</h2>
             <p>Whether you're relocating, buying, or renting, I'm here to make the process smooth and stress-free.</p>
-            <a href="contact.html" class="btn btn-primary btn-large">Get in Touch</a>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary btn-large">Get in Touch</a>
+                <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/dylansilver-tx/30min'});return false;" class="btn btn-secondary btn-large">Schedule a Free Call</a>
+            </div>
         </div>
     </section>
 
@@ -157,5 +181,7 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>

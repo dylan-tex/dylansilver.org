@@ -302,6 +302,133 @@ a:hover {
     font-size: 1.1rem;
 }
 
+/* ========== LEAD CAPTURE ========== */
+
+.lead-capture {
+    background-color: var(--light-bg);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 3rem 0;
+}
+
+.lead-capture-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.lead-capture-text h2 {
+    margin-bottom: 0.75rem;
+}
+
+.lead-capture-text p {
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.lead-capture-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.lead-capture-row input {
+    flex: 1;
+    min-width: 160px;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.lead-capture-row input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.lead-capture-fine {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* ========== BOOK A CALL ========== */
+
+.book-call {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 3.5rem 0;
+}
+
+.book-call-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+}
+
+.book-call-text h2 {
+    color: var(--white);
+    margin-bottom: 0.75rem;
+}
+
+.book-call-text p {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 1rem;
+}
+
+.book-call-bullets {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+}
+
+.book-call-bullets li {
+    color: rgba(255,255,255,0.9);
+    font-size: 0.95rem;
+}
+
+.book-call-bullets li::before {
+    content: "✓ ";
+    font-weight: 700;
+}
+
+.book-call-action {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.book-call-action .btn-primary {
+    background-color: var(--white);
+    color: var(--secondary-color);
+    border-color: var(--white);
+    white-space: nowrap;
+}
+
+.book-call-action .btn-primary:hover {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border-color: var(--accent-color);
+}
+
+.book-call-note {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.65);
+}
+
+/* ========== CTA BUTTONS ========== */
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 /* ========== SECTIONS ========== */
 
 section {
@@ -2128,5 +2255,32 @@ section {
         padding: 0.65rem 1rem;
         font-size: 0.85rem;
         min-height: 42px;
+    }
+
+    .lead-capture-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .lead-capture-row {
+        flex-direction: column;
+    }
+
+    .lead-capture-row input {
+        min-width: 100%;
+    }
+
+    .book-call-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .book-call-bullets {
+        justify-content: center;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
     }
 }
