@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeHeroVideo() {
     const video = document.querySelector('.hero-video-bg');
-    if (video) video.playbackRate = 2;
+    if (video) video.playbackRate = 4;
 }
 
 // ========== NAVIGATION ==========
