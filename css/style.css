@@ -234,6 +234,66 @@ a:hover {
     text-align: center;
 }
 
+/* Video-backed hero variant */
+.hero-video {
+    position: relative;
+    overflow: hidden;
+    background: #0a1a2f;
+    padding: 8rem 0;
+}
+
+.hero-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(10, 26, 47, 0.75) 0%,
+        rgba(0, 102, 204, 0.55) 100%);
+    z-index: 1;
+}
+
+.hero-video > .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-video .hero-content h1 {
+    color: var(--white);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.hero-video .hero-subtitle {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-video .hero-description {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-video-bg {
+        display: none;
+    }
+    .hero-video {
+        background:
+            linear-gradient(135deg, rgba(10, 26, 47, 0.7), rgba(0, 102, 204, 0.5)),
+            url('../videos/austin-skyline-poster.jpg') center/cover no-repeat;
+    }
+    .hero-overlay {
+        display: none;
+    }
+}
+
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
