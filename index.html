@@ -58,7 +58,7 @@
                     <div class="service-icon">🔑</div>
                     <h3>Home Purchases</h3>
                     <p>Navigate buying or selling with a certified REALTOR® with expertise in short sales and foreclosures.</p>
-                    <a href="services.html" class="link-arrow">Learn More →</a>
+                    <a href="services.html#home-purchases" class="link-arrow">Learn More →</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">📍</div>
@@ -76,14 +76,25 @@
             <h2>Credentials & Certifications</h2>
             <div class="credentials-list">
                 <a href="https://directories.apps.realtor/memberDetail/?personId=5093607&officeStreetCountry=US&memberLastName=Silver" target="_blank" class="credential credential-link">
-                    <strong>REALTOR® & NAR Short Sale & Foreclosure Certified</strong> - National Association of REALTORS® | SSFR Resource Certification for complex real estate transactions
+                    <strong>REALTOR® Member</strong> - National Association of REALTORS® | Verified licensed agent in good standing
                 </a>
-                <a href="/media.html" class="credential credential-link">
+                <button type="button" class="credential credential-link credential-btn" onclick="document.getElementById('sfr-modal').classList.add('is-open')">
+                    <strong>SSFR Certified</strong> - Short Sale & Foreclosure Resource | NAR-certified expertise in complex distressed transactions
+                </button>
+                <a href="media.html" class="credential credential-link">
                     <strong>Thought Leader</strong> - 400+ Podcast Episodes | Straight to the Money Podcast Host
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- SFR Certificate Modal -->
+    <div id="sfr-modal" class="sfr-modal-overlay" role="dialog" aria-modal="true" aria-label="SFR Certificate">
+        <div class="sfr-modal-box">
+            <button class="sfr-modal-close" aria-label="Close certificate" onclick="document.getElementById('sfr-modal').classList.remove('is-open')">&times;</button>
+            <img src="images/sfr-certificate.png" alt="Short Sale & Foreclosure Resource (SFR) Certification — Dylan Silver" class="sfr-modal-img">
+        </div>
+    </div>
 
     <!-- Email Capture Section -->
     <section class="lead-capture">
@@ -113,7 +124,7 @@
             <p>Whether you're relocating, buying, or renting, I'm here to make the process smooth and stress-free.</p>
             <div class="cta-buttons">
                 <a href="contact.html" class="btn btn-primary btn-large">Get in Touch</a>
-                <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/dylansilver-tx/30min'});return false;" class="btn btn-secondary btn-large">Schedule a Free Call</a>
+                <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/dylansilver-tx/30min'});return false;" class="btn btn-secondary btn-large">Book a $25 Consultation</a>
             </div>
         </div>
     </section>

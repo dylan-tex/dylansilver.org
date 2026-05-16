@@ -2284,3 +2284,99 @@ section {
         align-items: center;
     }
 }
+
+/* ========== CREDENTIAL BUTTON (SSFR box) ========== */
+
+.credential-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
+    width: 100%;
+}
+
+.credential-btn:hover {
+    background: var(--light-bg);
+    border-color: var(--primary-color);
+    color: inherit;
+}
+
+/* ========== INLINE CERT LINK (services list) ========== */
+
+.cert-link-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.cert-link-btn:hover {
+    color: var(--primary-color);
+}
+
+/* ========== SFR CERTIFICATE MODAL ========== */
+
+.sfr-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9000;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.sfr-modal-overlay.is-open {
+    display: flex;
+}
+
+.sfr-modal-box {
+    position: relative;
+    background: var(--white);
+    border-radius: 12px;
+    max-width: 720px;
+    width: 100%;
+    padding: 1rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.sfr-modal-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.sfr-modal-close {
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 1.25rem;
+    line-height: 1;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sfr-modal-close:hover {
+    background: var(--accent-color);
+}

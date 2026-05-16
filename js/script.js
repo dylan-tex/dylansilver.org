@@ -53,6 +53,18 @@ function initializeScrollBehavior() {
     });
 }
 
+// ========== CROSS-PAGE ANCHOR SCROLL ==========
+// On page load, if URL has a hash, scroll to top first then smoothly scroll to target
+if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+        window.scrollTo(0, 0);
+        setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    }
+}
+
 // ========== SCROLL HIGHLIGHT ==========
 //
 // Mobile (<=768px): a single box at a time gets `.in-view` — whichever
@@ -419,6 +431,27 @@ function trackPageView() {
     const page = getCurrentPage();
     // Example: ga('send', 'pageview', '/' + page);
 }
+
+// ========== SFR CERTIFICATE MODAL ==========
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('sfr-modal');
+    if (!modal) return;
+
+    // Close when clicking the backdrop (outside the box)
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            modal.classList.remove('is-open');
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            modal.classList.remove('is-open');
+        }
+    });
+});
 
 // ========== EXPORT FUNCTIONS ==========
 

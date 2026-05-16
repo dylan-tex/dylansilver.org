@@ -64,7 +64,7 @@
 
                     <div class="service-cta-row">
                         <a href="contact.html" class="btn btn-primary">Start Your Search</a>
-                        <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/dylansilver-tx/30min'});return false;" class="btn btn-secondary">Schedule a Free Call</a>
+                        <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/dylansilver-tx/30min'});return false;" class="btn btn-secondary">Book a $25 Consultation</a>
                         <a href="https://cowboyapartmentlocators.com/lead-form.html" target="_blank" rel="noopener" class="btn btn-secondary">Submit Apartment Search Form</a>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
     </section>
 
     <!-- Home Purchases Service -->
-    <section class="service-detail alternate">
+    <section class="service-detail alternate" id="home-purchases">
         <div class="container">
             <div class="service-block service-detail-content">
                 <div class="service-detail-text">
@@ -93,7 +93,7 @@
                     <h3>My Certifications:</h3>
                     <ul class="service-features">
                         <li>REALTOR® - National Association of REALTORS®</li>
-                        <li>SSFR - Short Sale & Foreclosure Resource Certification</li>
+                        <li>SSFR - Short Sale & Foreclosure Resource Certification &mdash; <button type="button" class="cert-link-btn" onclick="document.getElementById('sfr-modal').classList.add('is-open')">View Certificate</button></li>
                         <li>MetroxTex - Dallas Association of REALTORS®</li>
                     </ul>
 
@@ -135,6 +135,32 @@
                         <a href="contact.html" class="btn btn-primary">Plan Your Move</a>
                         <a href="" onclick="Calendly.initPopupWidget({url:'https://calendly.com/dylansilver-tx/30min'});return false;" class="btn btn-secondary">Book a Call</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="service-areas">
+        <div class="container">
+            <h2 style="text-align: center;">Service Areas</h2>
+
+            <div class="areas-grid">
+                <div class="area-card">
+                    <h3>Austin</h3>
+                    <p>Primary service area. Specialist in Austin apartment locating and home purchases.</p>
+                </div>
+                <div class="area-card">
+                    <h3>Dallas</h3>
+                    <p>MetroxTex member. Available for relocation and real estate services in the Dallas area.</p>
+                </div>
+                <div class="area-card">
+                    <h3>Greater Texas</h3>
+                    <p>Can assist with referrals and consultations for clients relocating to other Texas cities.</p>
+                </div>
+                <div class="area-card">
+                    <h3>Relocations</h3>
+                    <p>Nationwide relocation expertise. Help for professionals moving to Austin from anywhere.</p>
                 </div>
             </div>
         </div>
@@ -235,6 +261,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- SFR Certificate Modal -->
+    <div id="sfr-modal" class="sfr-modal-overlay" role="dialog" aria-modal="true" aria-label="SFR Certificate">
+        <div class="sfr-modal-box">
+            <button class="sfr-modal-close" aria-label="Close certificate" onclick="document.getElementById('sfr-modal').classList.remove('is-open')">&times;</button>
+            <img src="images/sfr-certificate.png" alt="Short Sale & Foreclosure Resource (SFR) Certification — Dylan Silver" class="sfr-modal-img">
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
