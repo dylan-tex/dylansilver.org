@@ -656,6 +656,13 @@ section {
     color: var(--primary-color);
 }
 
+.service-cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
 /* ========== ABOUT SECTIONS ========== */
 
 .about-bio {
