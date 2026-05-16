@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeContactForm();
     initializeHamburgerMenu();
     initializeScrollHighlight();
+    initializeSkillPills();
 });
 
 // ========== NAVIGATION ==========
@@ -53,62 +54,154 @@ function initializeScrollBehavior() {
 }
 
 // ========== SCROLL HIGHLIGHT ==========
+//
+// Mobile (<=768px): a single box at a time gets `.in-view` — whichever
+//   one is closest to the vertical center of the viewport. This mirrors
+//   the desktop behavior where only one box can be hovered at once.
+// Desktop (>=769px): no scroll highlight; CSS :hover handles it.
 
-let scrollObserver = null;
+let scrollHighlightHandler = null;
 
 function initializeScrollHighlight() {
-    // Check if mobile (only apply scroll highlight on mobile)
     const isMobile = window.innerWidth <= 768;
 
-    // Select all box elements that should have scroll highlight
+    // Select all box elements that should get the scroll highlight on mobile.
+    // Keep this list in sync with the matching @media (max-width: 768px)
+    // selector list in css/style.css.
     const boxSelectors = [
-        '.credential-link',
         '.service-card',
+        '.credential-link',
         '.credential-item',
         '.expertise-item',
+        '.disclosure-item',
+        '.why-card',
+        '.resource-card',
+        '.podcast-card',
+        '.philosophy-card',
+        '.expertise-block',
+        '.project-card',
+        '.github-card',
+        '.contact-method',
+        '.area-card',
         '.faq-item',
-        '.area-card'
+        '.bio-card',
+        '.intro-card'
     ];
 
     const allBoxes = document.querySelectorAll(boxSelectors.join(', '));
-
     if (allBoxes.length === 0) return;
 
-    // Disconnect existing observer
-    if (scrollObserver) {
-        scrollObserver.disconnect();
+    // Tear down any previous scroll handler before re-installing
+    if (scrollHighlightHandler) {
+        window.removeEventListener('scroll', scrollHighlightHandler);
+        scrollHighlightHandler = null;
     }
 
-    if (isMobile) {
-        // Mobile: add/remove in-view class on scroll
-        scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                } else {
-                    entry.target.classList.remove('in-view');
-                }
-            });
-        }, {
-            threshold: 0.5,
-            rootMargin: '0px'
+    if (!isMobile) {
+        // Desktop: no scroll highlight, hover only. Clear any leftover state.
+        allBoxes.forEach(box => box.classList.remove('in-view'));
+        return;
+    }
+
+    // Mobile: highlight the single box whose center is closest to the
+    // viewport center. As the user scrolls, the highlight transfers from
+    // one box to the next so only one is ever highlighted at a time.
+    let ticking = false;
+
+    function updateHighlight() {
+        ticking = false;
+        const vh = window.innerHeight;
+        const viewportCenter = vh / 2;
+
+        let bestBox = null;
+        let bestDistance = Infinity;
+
+        allBoxes.forEach(box => {
+            const rect = box.getBoundingClientRect();
+            // Skip boxes that are fully off-screen
+            if (rect.bottom <= 0 || rect.top >= vh) return;
+
+            const boxCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(boxCenter - viewportCenter);
+            if (distance < bestDistance) {
+                bestDistance = distance;
+                bestBox = box;
+            }
         });
 
         allBoxes.forEach(box => {
-            scrollObserver.observe(box);
-        });
-    } else {
-        // Desktop: remove all in-view classes (hover only)
-        allBoxes.forEach(box => {
-            box.classList.remove('in-view');
+            box.classList.toggle('in-view', box === bestBox);
         });
     }
+
+    scrollHighlightHandler = function () {
+        if (!ticking) {
+            window.requestAnimationFrame(updateHighlight);
+            ticking = true;
+        }
+    };
+
+    window.addEventListener('scroll', scrollHighlightHandler, { passive: true });
+    // Set the initial highlight on load
+    updateHighlight();
 }
 
-// Re-initialize on window resize
+// Re-initialize on window resize (handles desktop <-> mobile crossover)
 window.addEventListener('resize', () => {
     initializeScrollHighlight();
 });
+
+// ========== SKILL PILLS (Projects page) ==========
+//
+// Each .skill button has a data-info attribute. Clicking a pill toggles
+// its description in the #skill-info panel below the grid. Clicking the
+// same pill again (or pressing Escape) closes the panel.
+
+function initializeSkillPills() {
+    const pills = document.querySelectorAll('.skill[data-info]');
+    const infoPanel = document.getElementById('skill-info');
+    if (pills.length === 0 || !infoPanel) return;
+
+    function closePanel() {
+        infoPanel.hidden = true;
+        infoPanel.innerHTML = '';
+        pills.forEach(p => {
+            p.classList.remove('is-active');
+            p.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    function openPanel(pill) {
+        const label = pill.textContent.trim();
+        const info = pill.getAttribute('data-info') || '';
+        infoPanel.innerHTML = '<strong>' + label + '</strong>' + info;
+        infoPanel.hidden = false;
+        pills.forEach(p => {
+            const active = p === pill;
+            p.classList.toggle('is-active', active);
+            p.setAttribute('aria-expanded', active ? 'true' : 'false');
+        });
+    }
+
+    pills.forEach(pill => {
+        pill.setAttribute('aria-expanded', 'false');
+        pill.setAttribute('aria-controls', 'skill-info');
+        pill.addEventListener('click', () => {
+            if (pill.classList.contains('is-active')) {
+                closePanel();
+            } else {
+                openPanel(pill);
+            }
+        });
+    });
+
+    // Press Escape to close the panel
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !infoPanel.hidden) {
+            closePanel();
+        }
+    });
+}
 
 // ========== HAMBURGER MENU ==========
 

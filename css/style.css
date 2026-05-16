@@ -340,12 +340,6 @@ section {
     border-top: 4px solid transparent;
 }
 
-.service-card:hover {
-    border-top-color: var(--secondary-color);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-}
-
 .service-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -398,67 +392,186 @@ section {
     cursor: pointer;
 }
 
-.credential-link:hover {
-    background-color: var(--secondary-color);
-    border-left-color: var(--secondary-color);
-    color: var(--white);
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+/* ========================================
+   BOX HIGHLIGHT SYSTEM
+   Desktop (>=769px): solid blue fill on :hover only
+   Mobile  (<=768px): solid blue fill on .in-view
+                      (.in-view is toggled by JS on scroll,
+                       since hover is not available on touch)
+   ======================================== */
+
+/* Smooth transition for every highlightable content card */
+.service-card,
+.credential-link,
+.credential-item,
+.expertise-item,
+.disclosure-item,
+.why-card,
+.resource-card,
+.podcast-card,
+.philosophy-card,
+.expertise-block,
+.project-card,
+.github-card,
+.contact-method,
+.area-card,
+.faq-item,
+.bio-card,
+.intro-card {
+    transition: background-color 0.3s ease, color 0.3s ease,
+                border-color 0.3s ease, transform 0.3s ease,
+                box-shadow 0.3s ease;
 }
 
-.credential-link:hover strong {
-    color: var(--white);
-}
-
-/* Scroll highlight - mobile only */
-@media (max-width: 768px) {
-    .credential-link.in-view,
-    .service-card.in-view,
-    .credential-item.in-view,
-    .expertise-item.in-view,
-    .faq-item.in-view,
-    .area-card.in-view {
+/* --- Desktop: highlight on hover only --- */
+@media (min-width: 769px) {
+    .service-card:hover,
+    .credential-link:hover,
+    .credential-item:hover,
+    .expertise-item:hover,
+    .disclosure-item:hover,
+    .why-card:hover,
+    .resource-card:hover,
+    .podcast-card:hover,
+    .philosophy-card:hover,
+    .expertise-block:hover,
+    .project-card:hover,
+    .github-card:hover,
+    .contact-method:hover,
+    .area-card:hover,
+    .faq-item:hover,
+    .bio-card:hover,
+    .intro-card:hover {
         background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
         border-top-color: var(--secondary-color);
         border-left-color: var(--secondary-color);
-        border-color: var(--secondary-color);
+        color: var(--white);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 102, 204, 0.25);
+    }
+
+    .service-card:hover *,
+    .credential-link:hover *,
+    .credential-item:hover *,
+    .expertise-item:hover *,
+    .disclosure-item:hover *,
+    .why-card:hover *,
+    .resource-card:hover *,
+    .podcast-card:hover *,
+    .philosophy-card:hover *,
+    .expertise-block:hover *,
+    .project-card:hover *,
+    .github-card:hover *,
+    .contact-method:hover *,
+    .area-card:hover *,
+    .faq-item:hover *,
+    .bio-card:hover *,
+    .intro-card:hover * {
         color: var(--white);
     }
 
-    .credential-link.in-view strong,
-    .service-card.in-view h3,
-    .service-card.in-view p,
-    .credential-item.in-view h3,
-    .credential-item.in-view p,
-    .expertise-item.in-view h3,
-    .expertise-item.in-view p,
-    .faq-item.in-view h4,
-    .faq-item.in-view p,
-    .area-card.in-view h3,
-    .area-card.in-view p {
+    .podcast-card:hover .podcast-features li:before {
         color: var(--white);
     }
 
-    .credential-link.in-view a,
-    .service-card.in-view a,
-    .credential-item.in-view a,
-    .expertise-item.in-view a,
-    .faq-item.in-view a,
-    .area-card.in-view a {
-        color: var(--white);
+    /* Buttons inside a highlighted card invert to white bg + blue text
+       so they don't blend into the new blue background. */
+    .service-card:hover .btn,
+    .credential-link:hover .btn,
+    .credential-item:hover .btn,
+    .expertise-item:hover .btn,
+    .disclosure-item:hover .btn,
+    .why-card:hover .btn,
+    .resource-card:hover .btn,
+    .podcast-card:hover .btn,
+    .philosophy-card:hover .btn,
+    .expertise-block:hover .btn,
+    .project-card:hover .btn,
+    .github-card:hover .btn,
+    .contact-method:hover .btn,
+    .area-card:hover .btn,
+    .faq-item:hover .btn,
+    .bio-card:hover .btn,
+    .intro-card:hover .btn {
+        background-color: var(--white);
+        color: var(--secondary-color);
+        border-color: var(--white);
     }
 }
 
-/* Desktop: hover only (no scroll highlight) */
-@media (min-width: 769px) {
-    .credential-link.in-view,
+/* --- Mobile: highlight on scroll-into-view only --- */
+@media (max-width: 768px) {
     .service-card.in-view,
+    .credential-link.in-view,
     .credential-item.in-view,
     .expertise-item.in-view,
+    .disclosure-item.in-view,
+    .why-card.in-view,
+    .resource-card.in-view,
+    .podcast-card.in-view,
+    .philosophy-card.in-view,
+    .expertise-block.in-view,
+    .project-card.in-view,
+    .github-card.in-view,
+    .contact-method.in-view,
+    .area-card.in-view,
     .faq-item.in-view,
-    .area-card.in-view {
+    .bio-card.in-view,
+    .intro-card.in-view {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        border-top-color: var(--secondary-color);
+        border-left-color: var(--secondary-color);
+        color: var(--white);
+        box-shadow: 0 8px 24px rgba(0, 102, 204, 0.25);
+    }
+
+    .service-card.in-view *,
+    .credential-link.in-view *,
+    .credential-item.in-view *,
+    .expertise-item.in-view *,
+    .disclosure-item.in-view *,
+    .why-card.in-view *,
+    .resource-card.in-view *,
+    .podcast-card.in-view *,
+    .philosophy-card.in-view *,
+    .expertise-block.in-view *,
+    .project-card.in-view *,
+    .github-card.in-view *,
+    .contact-method.in-view *,
+    .area-card.in-view *,
+    .faq-item.in-view *,
+    .bio-card.in-view *,
+    .intro-card.in-view * {
+        color: var(--white);
+    }
+
+    .podcast-card.in-view .podcast-features li:before {
+        color: var(--white);
+    }
+
+    /* Buttons inside a highlighted card invert to white bg + blue text */
+    .service-card.in-view .btn,
+    .credential-link.in-view .btn,
+    .credential-item.in-view .btn,
+    .expertise-item.in-view .btn,
+    .disclosure-item.in-view .btn,
+    .why-card.in-view .btn,
+    .resource-card.in-view .btn,
+    .podcast-card.in-view .btn,
+    .philosophy-card.in-view .btn,
+    .expertise-block.in-view .btn,
+    .project-card.in-view .btn,
+    .github-card.in-view .btn,
+    .contact-method.in-view .btn,
+    .area-card.in-view .btn,
+    .faq-item.in-view .btn,
+    .bio-card.in-view .btn,
+    .intro-card.in-view .btn {
         background-color: var(--white);
-        color: inherit;
+        color: var(--secondary-color);
+        border-color: var(--white);
     }
 }
 
@@ -552,6 +665,32 @@ section {
 .bio-content {
     max-width: 800px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.bio-card {
+    background-color: var(--light-bg);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+    cursor: pointer;
+}
+
+.bio-card h2,
+.bio-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.bio-card p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.bio-card p:last-child {
+    margin-bottom: 0;
 }
 
 .bio-header {
@@ -595,15 +734,7 @@ section {
     padding: 2rem;
     border-radius: 8px;
     border-top: 4px solid var(--secondary-color);
-    transition: all 0.3s ease;
     cursor: pointer;
-}
-
-.credential-item:hover {
-    background-color: var(--light-bg);
-    border-top-color: var(--accent-color);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .credential-item h3 {
@@ -778,9 +909,26 @@ section {
     padding: 4rem 0;
 }
 
-.developer-intro p {
+.intro-card {
+    background-color: var(--light-bg);
+    padding: 2.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+    cursor: pointer;
+}
+
+.intro-card h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.intro-card p {
     line-height: 1.8;
     margin-bottom: 1.5rem;
+}
+
+.intro-card p:last-child {
+    margin-bottom: 0;
 }
 
 .tech-stack {
@@ -791,8 +939,15 @@ section {
 }
 
 .tech-stack h3 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     text-align: center;
+}
+
+.tech-stack-hint {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
 }
 
 .skills-list {
@@ -810,6 +965,48 @@ section {
     color: var(--secondary-color);
     font-weight: 600;
     font-size: 0.9rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.2s ease, color 0.2s ease,
+                transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill:hover,
+.skill:focus-visible {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+}
+
+.skill.is-active {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.skill-info {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--white);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.skill-info[hidden] {
+    display: none;
+}
+
+.skill-info strong {
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
 }
 
 .github-section {
@@ -932,12 +1129,6 @@ section {
     padding: 2rem;
     border-radius: 8px;
     border-left: 4px solid var(--secondary-color);
-    transition: all 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
 .project-card h3 {

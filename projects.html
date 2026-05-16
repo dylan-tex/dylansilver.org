@@ -39,23 +39,27 @@
     <!-- Developer Background -->
     <section class="developer-intro">
         <div class="container">
-            <h2>Developer & Builder</h2>
-            <p>Beyond real estate, I'm passionate about building software solutions that solve real problems. My projects combine my expertise in real estate with modern development practices and technology.</p>
+            <div class="intro-card">
+                <h2>Developer & Builder</h2>
+                <p>Beyond real estate, I'm passionate about building software solutions that solve real problems. My projects combine my expertise in real estate with modern development practices and technology.</p>
 
-            <p>I believe in the power of technology to streamline processes, improve user experiences, and create meaningful impact. Whether it's automation tools, web applications, or data analysis solutions, I approach each project with the same attention to detail and client-focused mindset as my real estate work.</p>
+                <p>I believe in the power of technology to streamline processes, improve user experiences, and create meaningful impact. Whether it's automation tools, web applications, or data analysis solutions, I approach each project with the same attention to detail and client-focused mindset as my real estate work.</p>
+            </div>
 
             <div class="tech-stack">
                 <h3>Tech Stack & Skills</h3>
+                <p class="tech-stack-hint">Click any skill below to learn more.</p>
                 <div class="skills-list">
-                    <span class="skill">Python</span>
-                    <span class="skill">JavaScript</span>
-                    <span class="skill">React</span>
-                    <span class="skill">Web Development</span>
-                    <span class="skill">API Development</span>
-                    <span class="skill">Database Design</span>
-                    <span class="skill">Automation</span>
-                    <span class="skill">Cloud Services</span>
+                    <button type="button" class="skill" data-info="Versatile language I reach for first for backend services, automation scripts, and data analysis. My go-to for stitching together APIs and building data pipelines.">Python</button>
+                    <button type="button" class="skill" data-info="Powers every interactive frontend I build and the Node.js backends behind them. The connective tissue of the modern web.">JavaScript</button>
+                    <button type="button" class="skill" data-info="Component-based framework I use to build fast, responsive single-page applications. Hooks, state management, and clean component architecture.">React</button>
+                    <button type="button" class="skill" data-info="Full-stack experience shipping production sites — semantic HTML, responsive CSS, performant JavaScript, and accessible UI patterns.">Web Development</button>
+                    <button type="button" class="skill" data-info="Designing and building RESTful and GraphQL APIs that connect frontends with databases, auth providers, and third-party services.">API Development</button>
+                    <button type="button" class="skill" data-info="Schema design, indexing, and query optimization across both SQL (Postgres, MySQL) and NoSQL stores. Data integrity matters.">Database Design</button>
+                    <button type="button" class="skill" data-info="Python and JavaScript automation that eliminates manual work — from web scraping and email workflows to deploy pipelines.">Automation</button>
+                    <button type="button" class="skill" data-info="Deploying, scaling, and monitoring applications on cloud platforms. Comfortable with serverless functions, object storage, and managed databases.">Cloud Services</button>
                 </div>
+                <div class="skill-info" id="skill-info" aria-live="polite" hidden></div>
             </div>
         </div>
     </section>
