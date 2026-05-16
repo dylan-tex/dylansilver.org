@@ -432,6 +432,7 @@ a:hover {
     background-color: var(--secondary-color);
     color: var(--white);
     padding: 3.5rem 0;
+    scroll-margin-top: 100px;
 }
 
 .book-call-content {
