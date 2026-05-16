@@ -60,17 +60,31 @@ function initializeScrollBehavior() {
 }
 
 // ========== CROSS-PAGE ANCHOR SCROLL ==========
-// On page load, if URL has a hash, scroll to top first then smoothly scroll to target.
-// Desktop (>768px): skip the scroll so the page lands at the top instead.
-if (window.location.hash) {
+// Desktop (>768px): strip #book-consult from consult-page links so the
+// user lands at the top of the consult page instead of scrolling past
+// the heading under the sticky navbar.
+// Mobile: keep the hash; on load, smooth-scroll to the section.
+function applyConsultLinkBehavior() {
+    const isMobile = window.innerWidth <= 768;
+    document.querySelectorAll('a[href*="contact.html#book-consult"]').forEach(link => {
+        if (!link.dataset.originalHref) {
+            link.dataset.originalHref = link.getAttribute('href');
+        }
+        link.setAttribute('href', isMobile ? link.dataset.originalHref : 'contact.html');
+    });
+}
+applyConsultLinkBehavior();
+document.addEventListener('DOMContentLoaded', applyConsultLinkBehavior);
+window.addEventListener('resize', applyConsultLinkBehavior);
+
+// On mobile: if URL has a hash, smooth-scroll to the target after load.
+if (window.location.hash && window.innerWidth <= 768) {
     const target = document.querySelector(window.location.hash);
-    if (target && window.innerWidth <= 768) {
+    if (target) {
         window.scrollTo(0, 0);
         setTimeout(() => {
             target.scrollIntoView({ behavior: 'smooth' });
         }, 100);
-    } else if (target) {
-        window.scrollTo(0, 0);
     }
 }
 
