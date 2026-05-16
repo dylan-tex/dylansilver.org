@@ -66,22 +66,19 @@
     </section>
 
     <!-- Credentials & Certifications -->
-    <section class="credentials-section">
+    <section class="credentials">
         <div class="container">
             <h2>Credentials & Certifications</h2>
-            <div class="credentials-detail">
-                <div class="credential-item">
-                    <h3>REALTOR® & NAR Short Sale & Foreclosure Certified</h3>
-                    <p>National Association of REALTORS®</p>
-                    <p class="credential-desc">Committed to the NAR Code of Ethics and standards of professional practice. Advanced certification demonstrating expertise in complex real estate transactions including short sales and foreclosures.</p>
-                    <p style="margin-top: 1rem;"><a href="https://directories.apps.realtor/memberDetail/?personId=5093607&officeStreetCountry=US&memberLastName=Silver" target="_blank" class="link-arrow">View NAR Profile & Certification →</a></p>
-                </div>
-                <div class="credential-item">
-                    <h3>Thought Leader</h3>
-                    <p>Real Estate Investing & Business Strategy</p>
-                    <p class="credential-desc">Host of the Straight to the Money Podcast and regular contributor to Investor Fuel. 400+ episodes sharing insights and perspectives that help professionals and investors make better financial decisions.</p>
-                    <p style="margin-top: 1rem;"><a href="/media.html" class="link-arrow">Listen to Podcasts →</a></p>
-                </div>
+            <div class="credentials-list">
+                <a href="https://directories.apps.realtor/memberDetail/?personId=5093607&officeStreetCountry=US&memberLastName=Silver" target="_blank" class="credential credential-link">
+                    <strong>REALTOR® Member</strong> - National Association of REALTORS® | Verified licensed agent in good standing
+                </a>
+                <button type="button" class="credential credential-link credential-btn" onclick="document.getElementById('sfr-modal').classList.add('is-open')">
+                    <strong>SSFR Certified</strong> - Short Sale & Foreclosure Resource | NAR-certified expertise in complex distressed transactions
+                </button>
+                <a href="media.html" class="credential credential-link">
+                    <strong>Thought Leader</strong> - 400+ Podcast Episodes | Straight to the Money Podcast Host
+                </a>
             </div>
         </div>
     </section>
@@ -89,7 +86,7 @@
     <!-- Professional Focus -->
     <section class="professional-focus">
         <div class="container">
-            <h2>Areas of Expertise</h2>
+            <h2 style="text-align: center;">Areas of Expertise</h2>
             <div class="expertise-grid">
                 <div class="expertise-item">
                     <h3>Austin Apartment Locating</h3>
@@ -203,6 +200,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- SFR Certificate Modal -->
+    <div id="sfr-modal" class="sfr-modal-overlay" role="dialog" aria-modal="true" aria-label="SFR Certificate">
+        <div class="sfr-modal-box">
+            <button class="sfr-modal-close" aria-label="Close certificate" onclick="document.getElementById('sfr-modal').classList.remove('is-open')">&times;</button>
+            <img src="images/sfr-certificate.png" alt="Short Sale & Foreclosure Resource (SFR) Certification — Dylan Silver" class="sfr-modal-img">
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
