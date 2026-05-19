@@ -23,9 +23,15 @@ function initializeClickableCards() {
         if (!link) return;
         card.classList.add('is-clickable');
         card.addEventListener('click', (e) => {
-            // If the user clicked directly on an <a> or <button>, let the
-            // native handler run (preserves cmd/ctrl/middle-click new-tab).
+            // Native link/button clicks always pass through (preserves
+            // cmd/ctrl/middle-click new-tab behavior on the actual link).
             if (e.target.closest('a, button')) return;
+
+            // Only navigate from a body click when the card is in its
+            // highlighted state: hovered on desktop, or .in-view on mobile.
+            const isHighlighted = card.matches(':hover') || card.classList.contains('in-view');
+            if (!isHighlighted) return;
+
             const href = link.getAttribute('href');
             if (!href) return;
             if (link.target === '_blank') {

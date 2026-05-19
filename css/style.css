@@ -562,8 +562,10 @@ section {
     border-top: 4px solid transparent;
 }
 
-/* Cards with a link inside get a pointer cursor; click handler wired in JS. */
-.service-card.is-clickable {
+/* Whole-card clickability is only active in the highlighted state.
+   Desktop: when hovered. Mobile: when .in-view (closest to viewport center). */
+.service-card.is-clickable:hover,
+.service-card.is-clickable.in-view {
     cursor: pointer;
 }
 
