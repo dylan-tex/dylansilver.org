@@ -442,6 +442,20 @@ a:hover {
     align-items: start;
 }
 
+@media (max-width: 768px) {
+    .book-call-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .book-call-action {
+        width: 100%;
+    }
+    .book-call-action .btn-primary {
+        display: block;
+        width: 100%;
+    }
+}
+
 .book-call-text h2 {
     color: var(--white);
     margin-bottom: 0.75rem;
