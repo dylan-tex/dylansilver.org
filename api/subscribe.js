@@ -61,23 +61,29 @@ export default async function handler(req, res) {
       return res.status(500).json({ success: false, message: 'Could not save subscription' });
     }
 
-    // Fire-and-forget notification email. Don't fail the subscription if email errors.
+    // Send notification email. Must await in serverless or the function exits
+    // before the SMTP exchange completes. Catch so SMTP failures don't break
+    // the subscription itself.
     if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
-      transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: process.env.SUBSCRIBE_NOTIFY_TO || process.env.EMAIL_USER,
-        replyTo: fields.email,
-        subject: `New Austin Market Updates subscriber: ${fields.name || fields.email}`,
-        html: `
-          <h2 style="color:#2c1a0e;">New newsletter subscriber</h2>
-          <table style="width:100%;border-collapse:collapse;">
-            <tr><td style="padding:8px 0;font-weight:600;width:120px;">Name:</td><td>${fields.name || '(not provided)'}</td></tr>
-            <tr><td style="padding:8px 0;font-weight:600;">Email:</td><td><a href="mailto:${fields.email}">${fields.email}</a></td></tr>
-            <tr><td style="padding:8px 0;font-weight:600;">Submitted:</td><td>${fields.submittedAt}</td></tr>
-          </table>
-          <p style="color:#6b7280;font-size:12px;margin-top:16px;">Saved to Airtable (record ${data.id}) from dylansilver.org</p>
-        `,
-      }).catch(err => console.error('Subscribe notify-email error:', err));
+      try {
+        await transporter.sendMail({
+          from: process.env.EMAIL_USER,
+          to: process.env.SUBSCRIBE_NOTIFY_TO || process.env.EMAIL_USER,
+          replyTo: fields.email,
+          subject: `New Austin Market Updates subscriber: ${fields.name || fields.email}`,
+          html: `
+            <h2 style="color:#2c1a0e;">New newsletter subscriber</h2>
+            <table style="width:100%;border-collapse:collapse;">
+              <tr><td style="padding:8px 0;font-weight:600;width:120px;">Name:</td><td>${fields.name || '(not provided)'}</td></tr>
+              <tr><td style="padding:8px 0;font-weight:600;">Email:</td><td><a href="mailto:${fields.email}">${fields.email}</a></td></tr>
+              <tr><td style="padding:8px 0;font-weight:600;">Submitted:</td><td>${fields.submittedAt}</td></tr>
+            </table>
+            <p style="color:#6b7280;font-size:12px;margin-top:16px;">Saved to Airtable (record ${data.id}) from dylansilver.org</p>
+          `,
+        });
+      } catch (mailErr) {
+        console.error('Subscribe notify-email error:', mailErr);
+      }
     }
 
     return res.status(200).json({ success: true, id: data.id });
