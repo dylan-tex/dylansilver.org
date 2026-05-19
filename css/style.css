@@ -565,7 +565,9 @@ section {
 /* Whole-card clickability is only active in the highlighted state.
    Desktop: when hovered. Mobile: when .in-view (closest to viewport center). */
 .service-card.is-clickable:hover,
-.service-card.is-clickable.in-view {
+.service-card.is-clickable.in-view,
+.resource-card.is-clickable:hover,
+.resource-card.is-clickable.in-view {
     cursor: pointer;
 }
 

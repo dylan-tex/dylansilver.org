@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeClickableCards() {
-    document.querySelectorAll('.service-card').forEach(card => {
+    document.querySelectorAll('.service-card, .resource-card').forEach(card => {
         const link = card.querySelector('.link-arrow, a[href]');
         if (!link) return;
         card.classList.add('is-clickable');
