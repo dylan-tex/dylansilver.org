@@ -64,9 +64,11 @@ export default async function handler(req, res) {
     // Send notification email. Must await in serverless or the function exits
     // before the SMTP exchange completes. Catch so SMTP failures don't break
     // the subscription itself.
+    console.log('subscribe: EMAIL_USER present?', !!process.env.EMAIL_USER, 'EMAIL_PASSWORD present?', !!process.env.EMAIL_PASSWORD);
     if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
       try {
-        await transporter.sendMail({
+        console.log('subscribe: attempting sendMail');
+        const info = await transporter.sendMail({
           from: process.env.EMAIL_USER,
           to: process.env.SUBSCRIBE_NOTIFY_TO || process.env.EMAIL_USER,
           replyTo: fields.email,
@@ -81,9 +83,12 @@ export default async function handler(req, res) {
             <p style="color:#6b7280;font-size:12px;margin-top:16px;">Saved to Airtable (record ${data.id}) from dylansilver.org</p>
           `,
         });
+        console.log('subscribe: sendMail accepted, messageId=', info && info.messageId, 'response=', info && info.response);
       } catch (mailErr) {
-        console.error('Subscribe notify-email error:', mailErr);
+        console.error('Subscribe notify-email error:', mailErr && mailErr.message, mailErr && mailErr.code, mailErr && mailErr.response);
       }
+    } else {
+      console.warn('subscribe: skipping email - EMAIL_USER or EMAIL_PASSWORD missing');
     }
 
     return res.status(200).json({ success: true, id: data.id });
