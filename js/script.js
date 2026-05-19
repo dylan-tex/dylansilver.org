@@ -28,8 +28,14 @@ function initializeClickableCards() {
             if (e.target.closest('a, button')) return;
 
             // Only navigate from a body click when the card is in its
-            // highlighted state: hovered on desktop, or .in-view on mobile.
-            const isHighlighted = card.matches(':hover') || card.classList.contains('in-view');
+            // highlighted state.
+            // Touch devices (no real hover): require .in-view only — iOS Safari
+            // briefly applies :hover on tap, which would otherwise bypass this.
+            // Hover-capable devices (desktop): require :hover.
+            const hasRealHover = window.matchMedia('(hover: hover)').matches;
+            const isHighlighted = hasRealHover
+                ? card.matches(':hover')
+                : card.classList.contains('in-view');
             if (!isHighlighted) return;
 
             const href = link.getAttribute('href');
