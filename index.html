@@ -107,14 +107,13 @@
                     <h2>Austin Market Updates</h2>
                     <p>Get monthly insights on Austin rental trends, neighborhood guides, and real estate tips — straight to your inbox.</p>
                 </div>
-                <form class="lead-capture-form" action="https://formspree.io/f/xpwzgqdw" method="POST">
-                    <input type="hidden" name="_subject" value="New Austin Market Updates Subscriber">
+                <form id="subscribe-form" class="lead-capture-form">
                     <div class="lead-capture-row">
                         <input type="text" name="name" placeholder="Your name" required>
                         <input type="email" name="email" placeholder="Your email address" required>
                         <button type="submit" class="btn btn-primary">Subscribe</button>
                     </div>
-                    <p class="lead-capture-fine">No spam. Unsubscribe anytime.</p>
+                    <p class="lead-capture-fine" id="subscribe-status">No spam. Unsubscribe anytime.</p>
                 </form>
             </div>
         </div>

@@ -9,11 +9,51 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeScrollBehavior();
     initializeContactForm();
+    initializeSubscribeForm();
     initializeHamburgerMenu();
     initializeScrollHighlight();
     initializeSkillPills();
     initializeHeroVideo();
 });
+
+function initializeSubscribeForm() {
+    const form = document.getElementById('subscribe-form');
+    if (!form) return;
+    const status = document.getElementById('subscribe-status');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = form.elements['name'].value.trim();
+        const email = form.elements['email'].value.trim();
+        if (!email) return;
+
+        submitBtn.disabled = true;
+        const original = submitBtn.textContent;
+        submitBtn.textContent = 'Subscribing...';
+        if (status) { status.textContent = ''; status.style.color = ''; }
+
+        try {
+            const res = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email }),
+            });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                if (status) { status.textContent = '✓ Subscribed! Check your inbox for updates.'; status.style.color = '#10b981'; }
+                form.reset();
+            } else {
+                if (status) { status.textContent = data.message || 'Could not subscribe. Please try again.'; status.style.color = '#ef4444'; }
+            }
+        } catch (err) {
+            if (status) { status.textContent = 'Network error. Please try again.'; status.style.color = '#ef4444'; }
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = original;
+        }
+    });
+}
 
 function initializeHeroVideo() {
     const video = document.querySelector('.hero-video-bg');
