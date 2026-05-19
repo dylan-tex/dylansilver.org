@@ -560,20 +560,11 @@ section {
     text-align: center;
     transition: all 0.3s ease;
     border-top: 4px solid transparent;
-    position: relative;
 }
 
-/* Make the entire service-card clickable when it contains a .link-arrow.
-   The pseudo-element overlays the whole card and inherits the link's hit area. */
-.service-card:has(.link-arrow) {
+/* Cards with a link inside get a pointer cursor; click handler wired in JS. */
+.service-card.is-clickable {
     cursor: pointer;
-}
-
-.service-card .link-arrow::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
 }
 
 .service-icon {

@@ -14,7 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollHighlight();
     initializeSkillPills();
     initializeHeroVideo();
+    initializeClickableCards();
 });
+
+function initializeClickableCards() {
+    document.querySelectorAll('.service-card').forEach(card => {
+        const link = card.querySelector('.link-arrow, a[href]');
+        if (!link) return;
+        card.classList.add('is-clickable');
+        card.addEventListener('click', (e) => {
+            // If the user clicked directly on an <a> or <button>, let the
+            // native handler run (preserves cmd/ctrl/middle-click new-tab).
+            if (e.target.closest('a, button')) return;
+            const href = link.getAttribute('href');
+            if (!href) return;
+            if (link.target === '_blank') {
+                window.open(href, '_blank', 'noopener');
+            } else {
+                window.location.href = href;
+            }
+        });
+    });
+}
 
 function initializeSubscribeForm() {
     const form = document.getElementById('subscribe-form');
