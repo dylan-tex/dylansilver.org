@@ -335,6 +335,12 @@ a:hover {
     opacity: 0.8;
 }
 
+@media (max-width: 768px) {
+    .hero-relive {
+        display: none;
+    }
+}
+
 .hero-cta {
     display: flex;
     gap: 1rem;
