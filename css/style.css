@@ -325,6 +325,16 @@ a:hover {
     margin-bottom: 2rem;
 }
 
+.hero-description .hero-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.hero-description .hero-link:hover {
+    opacity: 0.8;
+}
+
 .hero-cta {
     display: flex;
     gap: 1rem;
