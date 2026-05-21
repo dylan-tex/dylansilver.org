@@ -336,8 +336,10 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-    .hero-relive {
-        display: none;
+    .hero-description .hero-link {
+        pointer-events: none;
+        text-decoration: none;
+        cursor: default;
     }
 }
 
