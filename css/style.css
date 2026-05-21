@@ -336,9 +336,11 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-    .hero-description .hero-link {
+    .hero-description .hero-link,
+    .bio-relive-link {
         pointer-events: none;
         text-decoration: none;
+        color: inherit;
         cursor: default;
     }
 }
