@@ -2597,6 +2597,7 @@ section {
 .reviews {
     background-color: var(--light-bg);
     padding: 4rem 0;
+    scroll-margin-top: 90px;
 }
 
 .reviews h2 {
