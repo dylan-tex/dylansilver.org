@@ -446,6 +446,20 @@ a:hover {
     color: var(--text-secondary);
 }
 
+@media (max-width: 768px) {
+    .lead-capture-content {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        text-align: center;
+    }
+    .lead-capture-row {
+        flex-direction: column;
+    }
+    .lead-capture-row input {
+        min-width: 100%;
+    }
+}
+
 /* ========== BOOK A CALL ========== */
 
 .book-call {
