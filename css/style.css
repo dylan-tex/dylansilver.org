@@ -2425,8 +2425,9 @@ section {
 .credential-btn {
     appearance: none;
     -webkit-appearance: none;
-    background: none;
-    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    border: none;
+    border-left: 4px solid var(--secondary-color);
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
@@ -2515,8 +2516,9 @@ section {
 .credential-btn {
     appearance: none;
     -webkit-appearance: none;
-    background: none;
-    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    border: none;
+    border-left: 4px solid var(--secondary-color);
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
@@ -2525,9 +2527,11 @@ section {
 }
 
 .credential-btn:hover {
-    background: var(--light-bg);
-    border-color: var(--primary-color);
-    color: inherit;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 102, 204, 0.25);
 }
 
 /* ========== INLINE CERT LINK (services list) ========== */
@@ -2623,6 +2627,7 @@ section {
     display: grid;
     grid-template-columns: minmax(0, 720px);
     justify-content: center;
+    align-items: start;
     gap: 2rem;
 }
 
