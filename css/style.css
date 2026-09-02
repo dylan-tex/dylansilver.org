@@ -1073,6 +1073,34 @@ section {
     line-height: 1.7;
 }
 
+/* ========== INVESTMENT EXPERIENCE ========== */
+
+.investment-experience {
+    padding: 4rem 0;
+}
+
+/* Capped rather than 1fr (as .expertise-grid uses) so a single deal card
+   doesn't stretch across the full container. Centers cleanly as more
+   deals are added. */
+.deals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
+    gap: 2rem;
+    justify-content: center;
+}
+
+.deal-facts {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+}
+
+.deal-facts li {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0.35rem;
+}
+
 /* ========== PODCAST SECTION ========== */
 
 .featured-podcast,
