@@ -1079,6 +1079,17 @@ section {
     padding: 4rem 0;
 }
 
+.investment-experience h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Direct children only — the deal cards' own paragraphs stay left-aligned. */
+.investment-experience > .container > p {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
 /* Capped rather than 1fr (as .expertise-grid uses) so a single deal card
    doesn't stretch across the full container. Centers cleanly as more
    deals are added. */
@@ -2055,6 +2066,7 @@ section {
     .services-grid,
     .credentials-list,
     .expertise-grid,
+    .deals-grid,
     .why-grid,
     .philosophy-grid,
     .contact-methods,
