@@ -75,7 +75,7 @@ export default async function handler(req, res) {
       <p>We received your message and will get back to you as soon as possible.</p>
       <p>In the meantime, feel free to call us at <strong><a href="tel:2106924695" style="color: #3b82f6; text-decoration: none;">(210) 692-4695</a></strong></p>
       <br>
-      <p>Best regards,<br><strong>Dylan Silver</strong><br>Austin Real Estate Specialist</p>
+      <p>Best regards,<br><strong>Dylan Silver</strong><br>Austin REALTOR® and Software Engineer</p>
     `;
 
     await transporter.sendMail({

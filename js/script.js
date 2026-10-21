@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSkillPills();
     initializeHeroVideo();
     initializeClickableCards();
+    initializeCalendlyTriggers();
 });
 
 function initializeClickableCards() {
@@ -532,6 +533,24 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// ========== CALENDLY BOOKING POPUP ==========
+function initializeCalendlyTriggers() {
+    const triggers = document.querySelectorAll('a[data-calendly]');
+    if (!triggers.length) return;
+
+    triggers.forEach(function (trigger) {
+        trigger.addEventListener('click', function (e) {
+            // Only hijack the click once the async widget is actually ready.
+            // Otherwise fall through to the href, so a blocked or slow Calendly
+            // still lands the visitor on a booking page instead of a dead button.
+            if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+                e.preventDefault();
+                window.Calendly.initPopupWidget({ url: trigger.href });
+            }
+        });
+    });
+}
 
 // ========== EXPORT FUNCTIONS ==========
 
