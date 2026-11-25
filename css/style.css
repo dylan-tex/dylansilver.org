@@ -207,7 +207,7 @@ a:hover {
     }
 
     .nav-links.active {
-        max-height: 400px;
+        max-height: 560px;
     }
 
     .nav-links li {
@@ -2716,4 +2716,116 @@ section {
         max-width: 1100px;
         margin: 0 auto;
     }
+}
+
+/* ========== AI WORKFLOWS PAGE ========== */
+
+@media (max-width: 1100px) and (min-width: 769px) {
+    .nav-links {
+        gap: 0.85rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    .nav-links .btn-cta {
+        padding: 0.6rem 0.85rem;
+    }
+}
+
+.page-ai .section-intro {
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+}
+
+.page-ai .section-rule {
+    border-top: 1px solid var(--border-color);
+}
+
+.page-ai .ai-portrait {
+    display: block;
+    margin: 0 auto 2rem;
+}
+
+.page-ai .credentials h2 {
+    margin-bottom: 1.5rem;
+}
+
+.page-ai .portfolio-link {
+    text-align: center;
+    margin: 2rem 0 0;
+}
+
+.page-ai .pricing-grid {
+    align-items: stretch;
+}
+
+.page-ai .pricing-card {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-self: stretch;
+}
+
+.page-ai .pricing-card h3 {
+    font-size: 1.35rem;
+}
+
+.page-ai .pricing-actions {
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+
+.page-ai .consult-alt {
+    margin: 0.85rem 0 0;
+    font-size: 0.95rem;
+}
+
+.page-ai .consult-alt-spacer {
+    visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .page-ai .consult-alt-spacer {
+        display: none;
+    }
+}
+
+.page-ai .hero .consult-alt,
+.page-ai .cta-section .consult-alt,
+.page-ai .service-area-note {
+    text-align: center;
+}
+
+.page-ai .cta-section .consult-alt {
+    margin-bottom: 0;
+}
+
+.page-ai .service-area-note {
+    margin: 1.25rem auto 0;
+    font-size: 0.95rem;
+}
+
+.page-ai .step-kicker {
+    margin-bottom: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+}
+
+.page-ai a:focus-visible,
+.page-ai button:focus-visible {
+    outline: 2px solid var(--secondary-color);
+    outline-offset: 3px;
+}
+
+.page-ai .btn-primary:focus-visible,
+.page-ai .nav-links .btn-cta:focus-visible {
+    outline-color: var(--accent-color);
 }
