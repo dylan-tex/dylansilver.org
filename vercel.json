@@ -4,12 +4,21 @@
       "source": "/ai-workflows/",
       "destination": "/ai-workflows",
       "permanent": true
+    },
+    {
+      "source": "/ai-workflow/",
+      "destination": "/ai-workflow",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
       "source": "/ai-workflows",
       "destination": "/ai-workflows.html"
+    },
+    {
+      "source": "/ai-workflow",
+      "destination": "/ai-workflow.html"
     }
   ]
 }
