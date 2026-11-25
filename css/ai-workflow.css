@@ -356,6 +356,21 @@ a:hover {
   color: var(--muted);
 }
 
+.aw-price-grid li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.aw-price-grid .aw-btn {
+  margin-top: auto;
+}
+
+.aw-price-note {
+  margin-top: 1.25rem;
+  color: var(--muted);
+}
+
 .aw-steps {
   counter-reset: aw-step;
 }
@@ -500,6 +515,14 @@ a:hover {
 
   .aw-card-grid li:nth-child(n + 4) {
     grid-column: span 3;
+  }
+
+  .aw-card-grid.aw-price-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .aw-card-grid.aw-price-grid li {
+    grid-column: auto;
   }
 }
 
