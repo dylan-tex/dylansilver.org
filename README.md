@@ -5,7 +5,7 @@ A multipage website presenting Dylan Silver's work as an Austin REALTOR® and so
 ## Technology
 
 - HTML, CSS, and browser JavaScript, with no frontend build step.
-- Calendly's embedded widget for consultation booking.
+- Google Calendar appointment scheduling for consultation booking.
 - Node.js ES module API handlers and Nodemailer for IONOS SMTP email.
 - Airtable's REST API for storing newsletter subscriptions.
 
@@ -19,7 +19,7 @@ cd dylansilver.org
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open [localhost:8000](http://localhost:8000). Browse the pages and use the navigation, project skill buttons, and booking links. Calendly requires an internet connection.
+Open [localhost:8000](http://localhost:8000). Browse the pages and use the navigation, project skill buttons, and booking links. Booking links open Google Calendar and require an internet connection.
 
 This static preview serves the pages and assets. Contact and subscription submissions require the API runtime described below.
 
