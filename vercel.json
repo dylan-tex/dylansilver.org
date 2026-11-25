@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/ai-workflows/",
+      "destination": "/ai-workflows",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/ai-workflows",
+      "destination": "/ai-workflows.html"
+    }
+  ]
+}

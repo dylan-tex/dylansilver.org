@@ -103,7 +103,12 @@ function initializeNavigation() {
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
 
-        if (href === currentPage || (currentPage === '/' && href === 'index.html')) {
+        const hrefPage = (href || '').split('#')[0].split('/').pop();
+        const normalizedHref = hrefPage && !hrefPage.includes('.')
+            ? hrefPage + '.html'
+            : hrefPage;
+
+        if (normalizedHref === currentPage || (currentPage === 'index.html' && (href === 'index.html' || href === '/'))) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
@@ -113,8 +118,10 @@ function initializeNavigation() {
 
 function getCurrentPage() {
     const path = window.location.pathname;
-    const page = path.substring(path.lastIndexOf('/') + 1);
-    return page || 'index.html';
+    let page = path.substring(path.lastIndexOf('/') + 1);
+    if (!page) return 'index.html';
+    if (!page.includes('.')) return page + '.html';
+    return page;
 }
 
 // ========== SCROLL BEHAVIOR ==========
@@ -305,17 +312,26 @@ function initializeHamburgerMenu() {
     const navLinks = document.querySelectorAll('.nav-links a');
 
     if (hamburger && navMenu) {
+        const setMenuOpen = function(open) {
+            hamburger.classList.toggle('active', open);
+            navMenu.classList.toggle('active', open);
+            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+        };
+
+        hamburger.setAttribute('aria-expanded', 'false');
+        if (!hamburger.hasAttribute('aria-controls')) {
+            hamburger.setAttribute('aria-controls', 'nav-menu');
+        }
+
         // Toggle menu when hamburger is clicked
         hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            setMenuOpen(!navMenu.classList.contains('active'));
         });
 
         // Close menu when a nav link is clicked
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                setMenuOpen(false);
             });
         });
 
@@ -323,8 +339,7 @@ function initializeHamburgerMenu() {
         document.addEventListener('click', function(event) {
             const isClickInsideNav = hamburger.contains(event.target) || navMenu.contains(event.target);
             if (!isClickInsideNav && navMenu.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                setMenuOpen(false);
             }
         });
     }
